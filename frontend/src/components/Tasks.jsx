@@ -87,19 +87,22 @@ const Tasks = () => {
               tasks.map((task, index) => (
                 <div
                   key={task._id}
-                  className={`my-4 p-4 text-gray-600 rounded-md shadow-md ${task.status ? 'bg-green-200' : ''}`}
+                  className={`my-4 p-4 text-gray-600 rounded-md shadow-md ${
+                    task.status ? "bg-green-200" : ""
+                  }`}
                 >
                   <div className="flex items-center">
-                    
-                    <span className="font-medium">#{index + 1} {task.title}</span>
-                    
-                    <Tooltip  text={"Mark as compleate"} position={"top"}>
-                    <input 
-                      type="checkbox"
-                      checked={task.status}
-                      onChange={() => handleStatusChange(task._id)}
-                      className=" ml-auto mr-2 w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                    />
+                    <span className="font-medium">
+                      #{index + 1} {task.title}
+                    </span>
+
+                    <Tooltip text={"Mark as compleate"} position={"top"}>
+                      <input
+                        type="checkbox"
+                        checked={task.status}
+                        onChange={() => handleStatusChange(task._id)}
+                        className=" ml-auto mr-2 w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
                     </Tooltip>
 
                     <Tooltip text={"Edit this task"} position={"top"}>
@@ -121,27 +124,27 @@ const Tasks = () => {
                     </Tooltip>
                   </div>
                   <div className="flex items-center">
-                  <div className="whitespace-pre">{task.description}</div>
-                  <div className="ml-auto mr-2 font-light text-sm cursor-none">
-                  {task.status? "Compleated" :""}
-
-                  </div>
+                    <div>{task.description}</div>
+                    <div className="ml-auto mr-2 font-light text-sm cursor-none">
+                      {task.status ? "Compleated" : ""}
+                    </div>
                   </div>
                 </div>
               ))
             )}
-            <Link
-                  to="/tasks/add"
-                  className="bg-blue-500 text-white hover:bg-blue-600 font-medium rounded-md px-4 py-2"
-                >
-                  + Add new task{" "}
-                </Link>
+
+            {tasks.length !== 0 ? (
+              <Link
+              to="/tasks/add"
+              className="bg-blue-500 text-white hover:bg-blue-600 font-medium rounded-md px-4 py-2"
+            >
+              + Add new task{" "}
+            </Link>
+            ):("")}
+            
           </div>
-          
         )}
-       
       </div>
-      
     </>
   );
 };
