@@ -17,6 +17,7 @@ const Task = () => {
   const [task, setTask] = useState(null);
   const [formData, setFormData] = useState({
     title: "",
+    status:"",
     description: "",
   });
 
@@ -35,7 +36,7 @@ const Task = () => {
       };
       fetchData(config, { showSuccessToast: false }).then((data) => {
         setTask(data.task);
-        setFormData({ description: data.task.description });
+        setFormData({ description: data.task.description ,title:data.task.title , status:data.task.status });
       });
     }
   }, [mode, authState, taskId, fetchData]);
