@@ -49,6 +49,7 @@ const Task = () => {
   const handleReset = (e) => {
     e.preventDefault();
     setFormData({
+      status: task.status, 
       title: task.title,
       description: task.description,
     });
